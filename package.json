@@ -1,0 +1,24 @@
+{
+  "name": "seerbittest",
+  "version": "1.0.0",
+  "main": "index.js",
+  "chromeWebSecurity": false,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^18.0.6",
+    "@cypress/browserify-preprocessor": "latest",
+    "cypress-xpath": "^2.0.1",
+    "mysql": "^2.18.1"
+  },
+  "description": "",
+  "devDependencies": {
+    "cypress": "^13.10.0",
+    "cypress-clipboard": "^1.0.3",
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "cypress-iframe": "^1.0.1"
+  }
+}
