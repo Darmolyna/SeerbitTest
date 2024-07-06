@@ -24,7 +24,6 @@ When ('I login and check page tour', function(){
     cy.get('#password').type(this.data.password)
     cy.get('[data-testid]').click()
 
-
     const condition = cy.get('.py-3').should('exist');
     condition.then((exists) => {
       if (exists) {
@@ -61,7 +60,7 @@ When ('I generate a payment link', function(){
 Then ('I use payment link and use to perform transaction', function(){
     
     cy.visit('https://pay.seerbitapi.com/77438131')
-    cy.wait(60000)
+    cy.wait(120000)
     cy.wait('@discount')
     cy.get('p').contains('BY BEEBEE').should('exist')
     cy.get('#firstName').type(this.data.name)
