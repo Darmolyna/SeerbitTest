@@ -52,17 +52,34 @@ When('I validate login button is disabled after entering either username or pass
 });
 
 When ('I validate forgot password button is clickable and redirect to forgot password screen', function(){
-
+    cy.get('a').contains('Forgot password?').should('have.attr', 'href', '#/auth/recover-password')
+    cy.get('a').contains('Forgot password?').click()
+    cy.get('h2').contains('Forgot password').should('exist')
+    cy.get('span').contains('Return to login ').click()
 })
 
-Then ('I validate create account button is clickable and redirect to account creation screen', function(){
+Then ('I validate Sign Up button is clickable and redirect to account creation screen', function(){
+    cy.get('a').contains('Sign up').should('have.attr', 'href', '#/auth/register')
+    cy.get('a').contains('Sign up').click()
+    cy.get('h2').contains('Create an account').should('exist')
+    cy.get('a').contains('Sign in').click()
+})
 
+When ('I validate google play button is present on login screen and contaiuns link the redirect to play store', function(){
+    cy.get('a[href="https://apps.apple.com/ng/app/seerbit-mobile/id6476602836"] img').should('exist')
+    cy.get('a[href="https://apps.apple.com/ng/app/seerbit-mobile/id6476602836"]').should('exist')
+})
 
+When ('I validate app store button is present on login screen and contaiuns link the redirect to app store', function(){
+    cy.get('a[href="https://apps.apple.com/ng/app/seerbit-mobile/id6476602836"] img').should('exist')
+    cy.get('a[href="https://apps.apple.com/ng/app/seerbit-mobile/id6476602836"]').should('exist')
 })
 
 Given('I set the viewport to {string}', (device) => {
     if (device === 'iPhone-6') {
         cy.viewport('iphone-6');
+    } else if (device === 'iphone-xr') {
+        cy.viewport('iphone-xr');
     } else if (device === 'iPad-2') {
         cy.viewport('ipad-2');
     } else if (device === 'MacBook-15') {

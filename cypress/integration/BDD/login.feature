@@ -24,19 +24,26 @@ Scenario: validate login button is disabled if user did not enter either usernam
 Scenario: validate forgot password and create account button is clickable on login screen
   Given I navigate to the login screen
   When I validate forgot password button is clickable and redirect to forgot password screen
-  Then I validate create account button is clickable and redirect to account creation screen
+  Then I validate Sign Up button is clickable and redirect to account creation screen
+
+@login @regression @allApp
+Scenario: validate the google play and app store link is clickable and redirect to play store and app store respectively
+  Given I navigate to the login screen
+  When I validate google play button is present on login screen and contaiuns link the redirect to play store
+  When I validate app store button is present on login screen and contaiuns link the redirect to app store
 
 @responsiveness @login @allApp
 Scenario Outline: Validate login screen responsiveness on {device}
-    Given I set the viewport to "<device>"
-    When I navigate to the login screen
-    Then I verify the login form is visible and properly aligned on "<device>"
-    Then I validate that elements are correctly resized and positioned on "<device>"
-    Then I validate font sizes and element padding on "<device>"
-    Then I verify that the logo and images scale correctly on "<device>"
+  Given I set the viewport to "<device>"
+  When I navigate to the login screen
+  Then I verify the login form is visible and properly aligned on "<device>"
+  Then I validate that elements are correctly resized and positioned on "<device>"
+  Then I validate font sizes and element padding on "<device>"
+  Then I verify that the logo and images scale correctly on "<device>"
 
   Examples:
     | device    |
     | iPhone-6  |  # Mobile
+    | iphone-xr  |  # Mobile
     | iPad-2    |  # Tablet
     | MacBook-15|  # Desktop
