@@ -1,4 +1,4 @@
-/// <reference types="Cypress" />
+/// <reference types="cypress" />
 /// <reference types="cypress-iframe" />
 import 'cypress-iframe';
 
@@ -34,8 +34,7 @@ When ('I login and check page tour', function(){
       }else {
         cy.log('page overview tour not displayed');
       }
-    });
-    
+    }); 
 })
 Then ('I validate successfull login to my account', function(){
     cy.get('h5[title="User Name"]').contains('BLESSING Olaiya').should('exist')

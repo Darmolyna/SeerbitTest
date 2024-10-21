@@ -9,10 +9,16 @@ async function setupNodeEvents(on, config) {
 }
 
 module.exports = defineConfig({
-  defaultCommandTimeout: 9000000,
-  pageLoadTimeout: 9000000,
+  defaultCommandTimeout: 10000,
+  requestTimeout: 10000,
+  responseTimeout: 10000,
+  retries: {
+    runMode: 2,
+    openMode: 1
+  },
   env: {
     url: "https://www.dashboard.seerbit.com/#/auth/login",
+    baseUrl: "https://dashboardv3.seerbitapi.com/#/auth/login",
   },
   e2e: {
     experimentalOriginDependencies: true,

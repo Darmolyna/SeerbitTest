@@ -1,4 +1,4 @@
-/// <reference types="Cypress" />
+/// <reference types="cypress" />
 /// <reference types="cypress-iframe" />
 import 'cypress-iframe';
 
