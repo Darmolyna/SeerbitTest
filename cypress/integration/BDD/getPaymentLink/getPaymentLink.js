@@ -38,7 +38,7 @@ When ('I login and check page tour', function(){
     
 })
 Then ('I validate successfull login to my account', function(){
-    cy.get("span[class='mr-2']").contains('BLESSING').should('exist')
+    cy.get('h5[title="User Name"]').contains('BLESSING Olaiya').should('exist')
 })
 Then ('I navigate to payment link page', function(){
     cy.visit('https://www.dashboard.seerbit.com/#/payments/links')
@@ -59,15 +59,33 @@ When ('I generate a payment link', function(){
 })
 Then ('I use payment link and use to perform transaction', function(){
     
-    cy.visit('https://pay.seerbitapi.com/77438131')
-    cy.wait(120000)
-    cy.wait('@discount')
-    cy.get('p').contains('BY BEEBEE').should('exist')
-    cy.get('#firstName').type(this.data.name)
-    cy.get('#lastname').type(this.data.lastname)
-    cy.get('#email').type(this.data.emailAddress)
-    cy.get('#amount').type(Cypress._.random(0, 1e3))
-    cy.get('button[class="pay-button  w-3/4"]').click()
+    const firstName = this.data.name;
+    const lastName = this.data.lastname;
+    const email = this.data.emailAddress;
+    const amount = Cypress._.random(0, 1e3);
+    cy.visit(Cypress.env("url"))
+    cy.visit('https://pay.seerbitapi.com/77438131', { timeout: 10000 })
+
+    cy.origin('https://pay.seerbitapi.com/77438131', { args: { firstName, lastName, email, amount } }, ({ firstName, lastName, email, amount }) => {
+        //cy.wait(120000);
+        cy.wait('@discount').should('exist');
+        cy.get('p').contains('BY BEEBEE').should('exist');
+        cy.get('#firstName').type(firstName);
+        cy.get('#lastname').type(lastName);
+        cy.get('#email').type(email);
+        cy.get('#amount').type(amount);
+        cy.get('button[class="pay-button  w-3/4"]').click();
+    });
+
+    // cy.visit('https://pay.seerbitapi.com/77438131')
+    // cy.wait(120000)
+    // cy.wait('@discount')
+    // cy.get('p').contains('BY BEEBEE').should('exist')
+    // cy.get('#firstName').type(this.data.name)
+    // cy.get('#lastname').type(this.data.lastname)
+    // cy.get('#email').type(this.data.emailAddress)
+    // cy.get('#amount').type(Cypress._.random(0, 1e3))
+    // cy.get('button[class="pay-button  w-3/4"]').click()
     // cy.get('tbody tr td:nth-child(6) img:first').click().then(() => {
     //     // Access the clipboard content
     //     cy.window().then((win) => {

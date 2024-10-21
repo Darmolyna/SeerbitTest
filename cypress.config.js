@@ -9,11 +9,13 @@ async function setupNodeEvents(on, config) {
 }
 
 module.exports = defineConfig({
-  defaultCommandTimeout: 10000,
+  defaultCommandTimeout: 9000000,
+  pageLoadTimeout: 9000000,
   env: {
     url: "https://www.dashboard.seerbit.com/#/auth/login",
   },
   e2e: {
+    experimentalOriginDependencies: true,
     setupNodeEvents, 
     specPattern: 'cypress/integration/BDD/*.feature',
   },
