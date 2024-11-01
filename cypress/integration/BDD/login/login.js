@@ -5,6 +5,19 @@ import 'cypress-iframe';
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 import LoginPOM from '../login/loginPOM';
 const loginPOM = new LoginPOM();
+const AnalyticsResponse = {
+    payload: {
+        payVolume: 0,
+        pendingDisputes: "NGN 0.0",
+        nextPayout: "NGN 0.0",
+        totalCollection: "NGN 0.0",
+        lastPayout: "NGN 0.0",
+        customers: 3,
+    },
+    message: "success",
+    status: "success",
+    responseCode: "00",
+};
 
 Given('I navigate to the login screen', function () {
     //cy.viewport(1800, 1000);

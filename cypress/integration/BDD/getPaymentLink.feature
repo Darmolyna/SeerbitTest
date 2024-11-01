@@ -10,3 +10,4 @@ Feature: Seerbit get payment link validation
     Then I navigate to payment link page
     When I generate a payment link
     Then I use payment link and use to perform transaction
+    

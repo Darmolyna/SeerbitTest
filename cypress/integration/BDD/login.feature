@@ -4,10 +4,10 @@ Feature: Seerbit Merchant Dashboard Login Page Validation
 
 @login @regression @allApp
   Scenario Outline: Login Test
-    Given I navigate to the login screen
-    When I enter "<email>" and "<password>"
-    Then I click the login button
-    Then I validate that the login returns the appropriate response message "<expectedMessage>" and status code "<expectedStatusCode>"
+  Given I navigate to the login screen
+  When I enter "<email>" and "<password>"
+  Then I click the login button
+  Then I validate that the login returns the appropriate response message "<expectedMessage>" and status code "<expectedStatusCode>"
 
   Examples:
     | email                        | password      | expectedMessage                        | expectedStatusCode |
@@ -17,8 +17,8 @@ Feature: Seerbit Merchant Dashboard Login Page Validation
 
 @login @regression @allApp
 Scenario: validate login button is disabled if user did not enter either username or password
-    Given I navigate to the login screen
-    When I validate login button is disabled after entering either username or password
+  Given I navigate to the login screen
+  When I validate login button is disabled after entering either username or password
 
 @login @regression @allApp
 Scenario: validate forgot password and create account button is clickable on login screen
